@@ -333,9 +333,10 @@ clean_nodes=true
 The Ironic Conductor node also runs Nova Compute role since it is used as a scheduling input for any bare metal workloads.
 ``` 
 yum install openstack-nova-compute  
+```
 
-# Edit /etc/nova/nova.conf – These parameters must be configured on both controller and compute node
-    
+Edit /etc/nova/nova.conf – These parameters must be configured on both controller and compute node:
+```    
 [DEFAULT]
 compute_driver=nova.virt.ironic.IronicDriver
 scheduler_host_manager=nova.scheduler.ironic_host_manager.IronicHostManager
@@ -356,8 +357,10 @@ api_endpoint=http://10.167.36.63:6385/v1
 ### Installing DHCP server on Ironic Controller
 ```
 yum -y install dhcp
+```
 
-# Edit /etc/dhcp/dhcpd.conf
+Edit /etc/dhcp/dhcpd.conf
+```
 default-lease-time 600;
 max-lease-time 7200;
 
@@ -370,12 +373,12 @@ authoritative;
 subnet 192.168.0.0 netmask 255.255.255.0 {
  # specify the range of lease IP address
  range dynamic-bootp 192.168.0.128 192.168.0.254;
-# specify broadcast address
+ # specify broadcast address
  option broadcast-address 192.168.0.255;
- # specify default gateway
- # option routers 10.0.0.1;
 }
-
+```
+Restart the dhcp server.
+```
 service dhcpd restart
 ``` 
 ### Installing TFTP server 
