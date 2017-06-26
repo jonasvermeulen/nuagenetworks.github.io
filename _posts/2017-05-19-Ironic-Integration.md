@@ -272,8 +272,7 @@ For ease of installation, the Nuage Networks team have repackaged the Ironic com
 yum localinstall openstack-ironic-common-*_nuage.noarch.rpm
 yum localinstall openstack-ironic-api-*_nuage.noarch.rpm
 yum localinstall openstack-ironic-conductor-*_nuage.noarch.rpm
-
-yum install nuage-ironic-nova-*.noarch.rpm
+yum localinstall nuage-ironic-nova-*.noarch.rpm
 yum install python-ironicclient
 ```
 
