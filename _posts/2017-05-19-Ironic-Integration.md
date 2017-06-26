@@ -269,11 +269,11 @@ keystone endpoint-create \
 For interworking between Nuage Networks and OpenStack Liberty, the upstream Ironic Packages had to be slightly patched by the Nuage team. As such gateway ports could be created on a per-tenant basis. 
 For ease of installation, the Nuage Networks team have repackaged the Ironic components, so they could be installed with: 
 ```
-yum localinstall openstack-ironic-common-4.2.4-4.0.7_119_nuage.noarch.rpm
-yum localinstall openstack-ironic-api-4.2.4-4.0.7_119_nuage.noarch.rpm
-yum localinstall openstack-ironic-conductor-4.2.4-4.0.7_119_nuage.noarch.rpm
+yum localinstall openstack-ironic-common-*_nuage.noarch.rpm
+yum localinstall openstack-ironic-api-*_nuage.noarch.rpm
+yum localinstall openstack-ironic-conductor-*_nuage.noarch.rpm
 
-yum -y install nuage-ironic-nova-4.2.4-4.0.7_119.noarch.rpm
+yum install nuage-ironic-nova-*.noarch.rpm
 yum install python-ironicclient
 ```
 
