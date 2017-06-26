@@ -536,7 +536,7 @@ https://docs.openstack.org/developer/ironic/liberty/deploy/install-guide.html#en
 # test IPMI access
 ipmitool -I lanplus -H 10.167.36.125 -U ADMIN -P ADMIN chassis power status
 Chassis Power is on
-
+in
 # Create node, e.g for server6
 ironic node-create -d pxe_ipmitool -n server6
 
@@ -561,7 +561,7 @@ ironic port-update $port_uuid add extra/gateway_name=VSG-pair extra/gateway_port
 Finally, an image can be booted using a traditional Nova boot command, including options for the flavor and the desired tenant network it should be attached to:
 ```
 # Boot image
-nova boot BM.1 --image my-image --flavor my-baremetal-flavor --nic net-id=<uuid of final subnet>
+nova boot BM.1 --image my-image --flavor my-baremetal-flavor --nic net-id=<uuid of final network>
 ```
 
 During the process, we can see the new baremetal in the bootstrapping network
