@@ -347,7 +347,7 @@ monkey_patch_modules=nova.compute.manager:nuage_ironic_nova.nova.compute.manager
 [ironic]
 # Ironic keystone admin name
 admin_username=ironic
-admin_password=Alcateldc
+admin_password=<kspass>
 admin_url=http://10.167.36.62:35357/v2.0
 admin_tenant_name=services
 api_endpoint=http://10.167.36.63:6385/v1
