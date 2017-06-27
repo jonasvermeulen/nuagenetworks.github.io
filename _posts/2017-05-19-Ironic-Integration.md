@@ -217,10 +217,10 @@ Once created, you can make it available to Openstack admin project by using the 
 
 ```
 neutron net-create provisioning_net
-neutron subnet-create provisioning_net --name provisioning_subnet 10.0.0.0/24 --disable-dhcp --nuagenet d268e38b-493c-44d0-8829-4a501fb0f79d --net-partition OpenStack_default
+neutron subnet-create provisioning_net --name provisioning_subnet 192.168.0.0/24 --disable-dhcp --nuagenet d268e38b-493c-44d0-8829-4a501fb0f79d --net-partition OpenStack_default
 ```
 
-The Ironic Controller has to be attached to this bootstrapping network. The simplest way is to create a VLAN (e.g. `0`) on the gateway port (e.g. `1/1/2`) which will connect the Ironic controller into this domain.
+The Ironic Controller has to be attached to this bootstrapping network. The simplest way is to create a VLAN (e.g. `0`) on the gateway port (e.g. `1/1/2`) which will connect the Ironic controller into this domain. In this application note, 192.168.0.1 was chosen as the IP of the Ironic Controller in this network.
 
 ```
 # grep the id of the provisioning subnet:
@@ -321,6 +321,10 @@ rabbit_virtual_host = /
 rabbit_ha_queues = False
 heartbeat_rate=2
 heartbeat_timeout_threshold=0
+
+[conductor]
+# IP of the Ironic Conductor in the provisioning subnet:
+api_url=http://192.168.0.1:6385
 ```
 
 Cleaning is a configurable set of steps, such as erasing disk drives, that are performed on the node to ensure it is in a baseline state and ready to be deployed to. This is done after instance deletion, and during the transition from a "managed" to "available" state. Cleaning is enabled by default:
