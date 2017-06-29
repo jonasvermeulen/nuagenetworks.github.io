@@ -251,8 +251,6 @@ yum install centos-release-openstack-liberty
 ### Configure Keystone for Ironic Service
 
 ```
-# Copy over keystonerc_admin from the OpenStack controller
-
 keystone user-create --name=ironic --pass=<kspass> --email=ironic@example.com
 keystone user-role-add --user=ironic --tenant=services --role=admin
 keystone service-create --name=ironic --type=baremetal --description="Ironic bare metal provisioning service"
