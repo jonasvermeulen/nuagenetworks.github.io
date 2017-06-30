@@ -209,15 +209,15 @@ No. of LAG Ids: 1
 ## Create Bootstrapping Network on Nuage VSD
 
 
-The Bootstrapping Network is a simple network implemented as L2 domain that can be created on the OpenStack Controller or Nuage VSP. In this application note, we will use VSD Managed mode. The advantage of this is that ACLs or Security Groups are not configured automatically and do not consuem system resources on VSG.
+The Bootstrapping Network is a simple network implemented as L2 domain that can be created on the OpenStack Controller or Nuage VSP. In this application note, we will use VSD Managed mode. The advantage of this is that ACLs or Security Groups are not configured automatically and do not consume system resources on VSG.
 
-![Creating a L2 domain in Nuage for the bootstrapping network][nuage-boostrap-nw]
+![Creating a L2 domain in Nuage for the bootstrapping network][nuage-bootstrap-nw]
 
-Once created, you can make it available to Openstack admin project by using the UUID as `nuagenet` parameter:
+Once created, you can make it available to OpenStack admin project by using the UUID as `nuagenet` parameter:
 
 ```
 neutron net-create provisioning_net
-neutron subnet-create provisioning_net --name provisioning_subnet 192.168.0.0/24 --disable-dhcp --nuagenet d268e38b-493c-44d0-8829-4a501fb0f79d --net-partition OpenStack_default
+neutron subnet-create provisioning_net --name provisioning_subnet 192.168.0.0/24 --disable-dhcp --nuagenet d268e38b-493c-44d0-8829-4a501fb0f79d --net-partition Ironic_enterprise
 ```
 
 The Ironic Controller has to be attached to this bootstrapping network. The simplest way is to create a VLAN (e.g. `0`) on the gateway port (e.g. `1/1/2`) which will connect the Ironic controller into this domain. In this application note, 192.168.0.1 was chosen as the IP of the Ironic Controller in this network.
