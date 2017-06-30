@@ -344,9 +344,6 @@ compute_driver=nova.virt.ironic.IronicDriver
 scheduler_host_manager=nova.scheduler.ironic_host_manager.IronicHostManager
 compute_manager=ironic.nova.compute.manager.ClusteredComputeManager
 
-monkey_patch=true
-monkey_patch_modules=nova.compute.manager:nuage_ironic_nova.nova.compute.manager.decorator,nova.network.neutronv2.api:nuage_ironic_nova.nova.network.neutronv2.api.decorator
-
 [ironic]
 # Ironic keystone admin name
 admin_username=ironic
@@ -354,7 +351,14 @@ admin_password=<kspass>
 admin_url=http://10.167.36.62:35357/v2.0
 admin_tenant_name=services
 api_endpoint=http://10.167.36.63:6385/v1
-``` 
+```
+
+On the Ironic controller, configure following monkey patch in nova.conf:
+```
+[DEFAULT]
+monkey_patch=true
+monkey_patch_modules=nova.compute.manager:nuage_ironic_nova.nova.compute.manager.decorator,nova.network.neutronv2.api:nuage_ironic_nova.nova.network.neutronv2.api.decorator
+```
 
 ### Installing DHCP server on Ironic Controller
 ```
